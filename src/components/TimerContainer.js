@@ -5,12 +5,15 @@ import Header from './Header'
 import CountDown from './CountDown'
 import StartStop from './StartStop'
 import SetTime from './SetTime'
+import * as timerStates from '../timerStates'
 
 class TimerContainer extends Component {
 
   state = {
     timer: moment.duration(25, 'minutes'),
-    preSetTime: moment.duration(25, 'minutes')
+    preSetTime: moment.duration(25, 'minutes'),
+    timerState: timerStates.NOT_SET,
+    currentTimer: null
   }
 
   addZero = (time) => {
@@ -28,6 +31,32 @@ class TimerContainer extends Component {
     })
   }
 
+  startTimer = () => {
+    this.setState({
+      timerState: timerStates.RUNNING,
+      currentTimer: setInterval(this.reduceTimer, 1000)
+    })
+  }
+
+  reduceTimer = () => {
+    let newTime = moment.duration(this.state.timer)
+    newTime.subtract(1, 'seconds')
+    this.setState({
+      timer: newTime
+    })
+  }
+
+  stopTimer = () => {
+    if(this.state.currentTimer) {
+      clearInterval(this.state.currentTimer)
+    }
+    this.setState({
+      currentTimer: null,
+      timer: moment.duration(this.state.preSetTime),
+      timerState: timerStates.NOT_SET
+    })
+  }
+
   render() {
     console.log(this.state)
     return (
@@ -41,12 +70,19 @@ class TimerContainer extends Component {
               timer={this.state.timer}
               addZero={this.addZero}
             />
-            <StartStop />
+            <StartStop
+              timerState={this.state.timerState}
+              startTimer={this.startTimer}
+              stopTimer={this.stopTimer}
+            />
           </Container>
-          <SetTime
-            newtimer={this.state.preSetTime}
-            reset={this.newPreSetTime}
-          />
+          {
+            (this.state.timerState !== timerStates.RUNNING) &&
+            (<SetTime
+              newtimer={this.state.preSetTime}
+              reset={this.newPreSetTime}
+             />)
+          }
         </Grid.Column>
       </Grid>
     );

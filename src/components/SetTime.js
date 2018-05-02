@@ -21,13 +21,17 @@ class SetTime extends Component {
   }
 
   noNum = (v) => {
-    if(v == 0)
-    v = ''
+    if(v == 0) {
+      return ''
+    } else {
+      return v
+    }
   }
 
   render() {
     const { value } = this.state
     console.log(this.state)
+    console.log(this.props.newtimer.get('minutes'))
     return (
       <Form>
         <Form.Group widths='equal'>
@@ -53,7 +57,7 @@ class SetTime extends Component {
             defaultValue={this.noNum(this.props.newtimer.get('seconds'))}
           />
         </Form.Group>
-        <Form.Button>Submit</Form.Button>
+        {/* <Form.Button>Submit</Form.Button> */}
       </Form>
     );
   }
