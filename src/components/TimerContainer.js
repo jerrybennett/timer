@@ -13,13 +13,23 @@ class TimerContainer extends Component {
     preSetTime: moment.duration(25, 'minutes')
   }
 
-  setPreSetTime = (v) => {
+  addZero = (time) => {
+    if(time < 10) {
+      return `0${time}`
+    } else {
+      return time
+    }
+  }
+
+  newPreSetTime = (newTimer) => {
     this.setState({
-      
+      timer: newTimer,
+      preSetTime: newTimer
     })
   }
 
   render() {
+    console.log(this.state)
     return (
       <Grid centered columns={1}>
         <Grid.Column width={6} className='center'>
@@ -27,10 +37,16 @@ class TimerContainer extends Component {
             <Header />
           </Container>
           <Container textAlign='center'>
-            <CountDown timer={this.state.timer}/>
+            <CountDown
+              timer={this.state.timer}
+              addZero={this.addZero}
+            />
             <StartStop />
           </Container>
-          <SetTime newtimer={this.state.preSetTime}/>
+          <SetTime
+            newtimer={this.state.preSetTime}
+            reset={this.newPreSetTime}
+          />
         </Grid.Column>
       </Grid>
     );
