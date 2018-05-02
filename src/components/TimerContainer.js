@@ -7,9 +7,16 @@ import StartStop from './StartStop'
 import SetTime from './SetTime'
 
 class TimerContainer extends Component {
+
   state = {
     timer: moment.duration(25, 'minutes'),
     preSetTime: moment.duration(25, 'minutes')
+  }
+
+  setPreSetTime = (v) => {
+    this.setState({
+      
+    })
   }
 
   render() {
@@ -23,7 +30,7 @@ class TimerContainer extends Component {
             <CountDown timer={this.state.timer}/>
             <StartStop />
           </Container>
-          <SetTime />
+          <SetTime newtimer={this.state.preSetTime}/>
         </Grid.Column>
       </Grid>
     );
