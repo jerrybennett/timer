@@ -20,11 +20,11 @@ class SetTime extends Component {
     this.props.reset(newTimer)
   }
 
-  noNum = (v) => {
-    if(v == 0) {
+  noNum = (val) => {
+    if(val == 0) {
       return ''
     } else {
-      return v
+      return val
     }
   }
 

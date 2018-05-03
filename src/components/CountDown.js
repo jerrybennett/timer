@@ -1,13 +1,4 @@
 import React from 'react';
-// import moment from 'moment'
-
-// let addZero = (time) => {
-//   if(time < 10) {
-//     return `0${time}`
-//   } else {
-//     return time
-//   }
-// }
 
 const CountDown = (props) => {
   return (

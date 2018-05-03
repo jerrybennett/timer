@@ -18,6 +18,7 @@ class StartStop extends Component {
         <div>
           <Button
             color='orange'
+            onClick={this.props.pauseTimer}
           >
             Pause ||
           </Button>
@@ -25,6 +26,23 @@ class StartStop extends Component {
           <Button
             onClick={this.props.stopTimer}
             color='red'
+          >
+            Reset
+          </Button>
+        </div>
+      );
+    } else if(this.props.timerState === timerStates.PAUSED) {
+      return (
+        <div>
+          <Button
+            onClick={this.props.startTimer} color='green'
+          >
+            Start >>
+          </Button>
+
+          <Button
+            color='red'
+            onClick={this.props.stopTimer}
           >
             Reset
           </Button>

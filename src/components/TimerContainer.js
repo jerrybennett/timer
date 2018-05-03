@@ -13,7 +13,8 @@ class TimerContainer extends Component {
     timer: moment.duration(25, 'minutes'),
     preSetTime: moment.duration(25, 'minutes'),
     timerState: timerStates.NOT_SET,
-    currentTimer: null
+    currentTimer: null,
+    on: false
   }
 
   addZero = (time) => {
@@ -34,7 +35,8 @@ class TimerContainer extends Component {
   startTimer = () => {
     this.setState({
       timerState: timerStates.RUNNING,
-      currentTimer: setInterval(this.reduceTimer, 1000)
+      currentTimer: setInterval(this.reduceTimer, 1000),
+      on: true
     })
   }
 
@@ -53,7 +55,20 @@ class TimerContainer extends Component {
     this.setState({
       currentTimer: null,
       timer: moment.duration(this.state.preSetTime),
-      timerState: timerStates.NOT_SET
+      timerState: timerStates.NOT_SET,
+      on: false
+    })
+  }
+
+  pauseTimer = () => {
+    if(this.state.currentTimer) {
+      clearInterval(this.state.currentTimer)
+    }
+    this.setState({
+      currentTimer: null,
+      timer: moment.duration(this.state.timer),
+      timerState: timerStates.PAUSED,
+      on: false
     })
   }
 
@@ -74,6 +89,7 @@ class TimerContainer extends Component {
               timerState={this.state.timerState}
               startTimer={this.startTimer}
               stopTimer={this.stopTimer}
+              pauseTimer={this.pauseTimer}
             />
           </Container>
           {
