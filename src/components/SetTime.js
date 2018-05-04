@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react'
 import moment from 'moment'
+import * as timerStates from '../timerStates'
+let player;
 
 class SetTime extends Component {
 
@@ -33,32 +35,35 @@ class SetTime extends Component {
     console.log(this.state)
     console.log(this.props.newtimer.get('minutes'))
     return (
-      <Form>
-        <Form.Group widths='equal'>
-          <Form.Input fluid
-            onChange={this.handleChange}
-            label='Hours'
-            placeholder='Hours'
-            name='hours'
-            defaultValue={this.noNum(this.props.newtimer.get('hours'))}
-          />
-          <Form.Input fluid
-            onChange={this.handleChange}
-            label='Minutes'
-            placeholder='Minutes'
-            name='minutes'
-            defaultValue={this.noNum(this.props.newtimer.get('minutes'))}
-          />
-          <Form.Input fluid
-            onChange={this.handleChange}
-            label='Seconds'
-            placeholder='Seconds'
-            name='seconds'
-            defaultValue={this.noNum(this.props.newtimer.get('seconds'))}
-          />
-        </Form.Group>
-        {/* <Form.Button>Submit</Form.Button> */}
-      </Form>
+      <div>
+        <Form>
+          <Form.Group widths='equal'>
+            <Form.Input fluid
+              onChange={this.handleChange}
+              label='Hours'
+              placeholder='Hours'
+              name='hours'
+              defaultValue={this.noNum(this.props.newtimer.get('hours'))}
+            />
+            <Form.Input fluid
+              onChange={this.handleChange}
+              label='Minutes'
+              placeholder='Minutes'
+              name='minutes'
+              defaultValue={this.noNum(this.props.newtimer.get('minutes'))}
+            />
+            <Form.Input fluid
+              onChange={this.handleChange}
+              label='Seconds'
+              placeholder='Seconds'
+              name='seconds'
+              defaultValue={this.noNum(this.props.newtimer.get('seconds'))}
+            />
+          </Form.Group>
+          {/* <Form.Button>Submit</Form.Button> */}
+        </Form>
+        {this.props.alert(this.props.timerState)}
+      </div>
     );
   }
 }

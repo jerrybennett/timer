@@ -6,15 +6,30 @@ import CountDown from './CountDown'
 import StartStop from './StartStop'
 import SetTime from './SetTime'
 import * as timerStates from '../timerStates'
+var Sound = require('react-sound').default;
 
 class TimerContainer extends Component {
 
   state = {
+    time: new Date().getTime(),
     timer: moment.duration(25, 'minutes'),
     preSetTime: moment.duration(25, 'minutes'),
     timerState: timerStates.NOT_SET,
     currentTimer: null,
     on: false
+  }
+
+  alert = (i) => {
+    if(i === timerStates.COMPLETE)
+     return (
+       <iframe hidden id="player" type="text/html" width="180" height="180"
+       src="https://www.youtube.com/embed/ybGOT4d2Hs8?autoplay=1&origin=http://example.com"
+             frameborder="0"></iframe>
+           )
+  }
+
+  sound = () => {
+
   }
 
   addZero = (time) => {
@@ -41,6 +56,11 @@ class TimerContainer extends Component {
   }
 
   reduceTimer = () => {
+    if(this.state.timer.get('hours') == 0 && this.state.timer.get('minutes') == 0 && this.state.timer.get('seconds') == 0
+    ) {
+      this.completeTimer();
+      return;
+    }
     let newTime = moment.duration(this.state.timer)
     newTime.subtract(1, 'seconds')
     this.setState({
@@ -72,6 +92,18 @@ class TimerContainer extends Component {
     })
   }
 
+  completeTimer = () => {
+    if(this.state.currentTimer) {
+      clearInterval(this.state.currentTimer)
+    }
+    this.setState({
+      currentTimer: null,
+      timer: this.state.preSetTime,
+      timerState: timerStates.COMPLETE,
+      on: false
+    })
+  }
+
   render() {
     console.log(this.state)
     return (
@@ -97,6 +129,8 @@ class TimerContainer extends Component {
             (<SetTime
               newtimer={this.state.preSetTime}
               reset={this.newPreSetTime}
+              alert={this.alert}
+              timerState={this.state.timerState}
              />)
           }
         </Grid.Column>

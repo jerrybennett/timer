@@ -5,7 +5,7 @@ import * as timerStates from '../timerStates'
 class StartStop extends Component {
 
   displayButton = () => {
-    if(this.props.timerState === timerStates.NOT_SET) {
+    if(this.props.timerState === timerStates.NOT_SET || this.props.timerState === timerStates.COMPLETE) {
       return (
         <Button
           onClick={this.props.startTimer} color='green'
@@ -23,12 +23,12 @@ class StartStop extends Component {
             Pause ||
           </Button>
 
-          <Button
+          {/* <Button
             onClick={this.props.stopTimer}
             color='red'
-          >
+            >
             Reset
-          </Button>
+          </Button> */}
         </div>
       );
     } else if(this.props.timerState === timerStates.PAUSED) {
@@ -37,7 +37,7 @@ class StartStop extends Component {
           <Button
             onClick={this.props.startTimer} color='green'
           >
-            Start >>
+            RESUME
           </Button>
 
           <Button
