@@ -29,7 +29,7 @@ class TimerContainer extends Component {
 
   sound = () => {
     return (
-      <Sound currentTimer={this.state.curcurrentTimer}/>
+      <Sound />
     )
   }
 
