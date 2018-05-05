@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 var Sound = require('react-sound').default;
 
-export default class Sound extends React.Component {
+export default class Alert extends Component {
+
   render() {
     return (
       <Sound
-        url="https://archive.org/details/universe"
+        url="https://ia800809.us.archive.org/26/items/ElephantSounds/elephant1.mp3"
         playStatus={Sound.status.PLAYING}
         onLoading={this.handleSongLoading}
         onPlaying={this.handleSongPlaying}

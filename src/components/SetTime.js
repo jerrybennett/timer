@@ -60,7 +60,6 @@ class SetTime extends Component {
               defaultValue={this.noNum(this.props.newtimer.get('seconds'))}
             />
           </Form.Group>
-          {/* <Form.Button>Submit</Form.Button> */}
         </Form>
         {this.props.alert(this.props.timerState)}
       </div>

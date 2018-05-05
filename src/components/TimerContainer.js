@@ -6,14 +6,15 @@ import CountDown from './CountDown'
 import StartStop from './StartStop'
 import SetTime from './SetTime'
 import * as timerStates from '../timerStates'
-var Sound = require('react-sound').default;
+import Sound from './Sound'
+
 
 class TimerContainer extends Component {
 
   state = {
     time: new Date().getTime(),
-    timer: moment.duration(25, 'minutes'),
-    preSetTime: moment.duration(25, 'minutes'),
+    timer: moment.duration(0, 'minutes'),
+    preSetTime: moment.duration(0, 'minutes'),
     timerState: timerStates.NOT_SET,
     currentTimer: null,
     on: false
@@ -22,14 +23,14 @@ class TimerContainer extends Component {
   alert = (i) => {
     if(i === timerStates.COMPLETE)
      return (
-       <iframe hidden id="player" type="text/html" width="180" height="180"
-       src="https://www.youtube.com/embed/ybGOT4d2Hs8?autoplay=1&origin=http://example.com"
-             frameborder="0"></iframe>
+       this.sound()
            )
   }
 
   sound = () => {
-
+    return (
+      <Sound currentTimer={this.state.curcurrentTimer}/>
+    )
   }
 
   addZero = (time) => {
@@ -106,6 +107,7 @@ class TimerContainer extends Component {
 
   render() {
     console.log(this.state)
+    let Sound = import('react-sound').default;
     return (
       <Grid centered columns={1}>
         <Grid.Column width={6} className='center'>
