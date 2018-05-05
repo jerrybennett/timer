@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-var Sound = require('react-sound').default;
+let Sound = require('react-sound').default;
 
 export default class Alert extends Component {
 

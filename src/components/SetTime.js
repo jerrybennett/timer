@@ -61,7 +61,6 @@ class SetTime extends Component {
             />
           </Form.Group>
         </Form>
-        {this.props.alert(this.props.timerState)}
       </div>
     );
   }

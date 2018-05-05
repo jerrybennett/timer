@@ -107,7 +107,6 @@ class TimerContainer extends Component {
 
   render() {
     console.log(this.state)
-    let Sound = import('react-sound').default;
     return (
       <Grid centered columns={1}>
         <Grid.Column width={6} className='center'>
@@ -136,6 +135,7 @@ class TimerContainer extends Component {
              />)
           }
         </Grid.Column>
+        {this.alert(this.state.timerState)}
       </Grid>
     );
   }

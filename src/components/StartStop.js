@@ -22,13 +22,6 @@ class StartStop extends Component {
           >
             Pause ||
           </Button>
-
-          {/* <Button
-            onClick={this.props.stopTimer}
-            color='red'
-            >
-            Reset
-          </Button> */}
         </div>
       );
     } else if(this.props.timerState === timerStates.PAUSED) {
