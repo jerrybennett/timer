@@ -20,8 +20,8 @@ class TimerContainer extends Component {
     on: false
   }
 
-  alert = (i) => {
-    if(i === timerStates.COMPLETE)
+  alert = () => {
+    if(timerStates.COMPLETE)
      return (
        this.sound()
            )
