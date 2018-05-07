@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import soundfile from '../assets/elephant.mp3'
 let Sound = require('react-sound').default;
 
 export default class Alert extends Component {
@@ -6,7 +7,7 @@ export default class Alert extends Component {
   render() {
     return (
       <Sound
-        url="https://ia800809.us.archive.org/26/items/ElephantSounds/elephant1.mp3"
+        url={soundfile}
         playStatus={Sound.status.PLAYING}
         onLoading={this.handleSongLoading}
         onPlaying={this.handleSongPlaying}

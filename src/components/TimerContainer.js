@@ -20,8 +20,8 @@ class TimerContainer extends Component {
     on: false
   }
 
-  alert = () => {
-    if(timerStates.COMPLETE)
+  alert = (i) => {
+    if(i === timerStates.COMPLETE)
      return (
        this.sound()
            )
@@ -30,6 +30,7 @@ class TimerContainer extends Component {
   sound = () => {
     return (
       <Sound />
+
     )
   }
 
@@ -44,7 +45,8 @@ class TimerContainer extends Component {
   newPreSetTime = (newTimer) => {
     this.setState({
       timer: newTimer,
-      preSetTime: newTimer
+      preSetTime: newTimer,
+      timerState: timerStates.NOT_SET
     })
   }
 

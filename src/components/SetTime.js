@@ -13,6 +13,7 @@ class SetTime extends Component {
   }
 
   handleChange = (e, { value }) => {
+    
     let newTimer = this.props.newtimer
 
     this.setState({ [e.target.name]: e.target.value })
