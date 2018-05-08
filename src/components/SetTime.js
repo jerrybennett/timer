@@ -32,7 +32,7 @@ class SetTime extends Component {
   }
 
   render() {
-    
+
     const { value } = this.state
     console.log(this.state)
     console.log(this.props.newtimer.get('minutes'))
