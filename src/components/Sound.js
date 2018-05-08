@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import soundfile from '../assets/elephant.mp3'
-let Sound = require('react-sound').default;
+import Sound from 'react-sound'
 
 export default class Alert extends Component {
 

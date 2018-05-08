@@ -13,7 +13,7 @@ class SetTime extends Component {
   }
 
   handleChange = (e, { value }) => {
-    
+
     let newTimer = this.props.newtimer
 
     this.setState({ [e.target.name]: e.target.value })
@@ -32,9 +32,11 @@ class SetTime extends Component {
   }
 
   render() {
+    
     const { value } = this.state
     console.log(this.state)
     console.log(this.props.newtimer.get('minutes'))
+
     return (
       <div>
         <Form>
