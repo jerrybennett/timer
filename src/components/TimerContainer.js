@@ -59,7 +59,7 @@ class TimerContainer extends Component {
   }
 
   reduceTimer = () => {
-    if(this.state.timer.get('hours') == 0 && this.state.timer.get('minutes') == 0 && this.state.timer.get('seconds') == 0
+    if(this.state.timer.get('hours') === 0 && this.state.timer.get('minutes') === 0 && this.state.timer.get('seconds') === 0
     ) {
       this.completeTimer();
       return;

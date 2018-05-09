@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react'
-import moment from 'moment'
-import * as timerStates from '../timerStates'
-let player;
+// import moment from 'moment'
+// import * as timerStates from '../timerStates'
+// let player;
 
 class SetTime extends Component {
 
@@ -24,44 +24,39 @@ class SetTime extends Component {
   }
 
   noNum = (val) => {
-    if(val == 0) {
+    if(val === 0) {
       return ''
     } else {
       return val
     }
   }
 
+  inputs = () => {
+    let time = ['hours', 'minutes', 'seconds']
+
+      return(
+        time.map( i => <Form.Input key={i} fluid
+          onChange={this.handleChange}
+          label={i}
+          placeholder={i}          name={i}
+          defaultValue={this.noNum(this.props.newtimer.get('hours'))}
+                       />)
+      )
+  }
+
+
   render() {
 
-    const { value } = this.state
+    // const { value } = this.state
     console.log(this.state)
     console.log(this.props.newtimer.get('minutes'))
+    // console.log(this.inputs())
 
     return (
       <div>
         <Form>
           <Form.Group widths='equal'>
-            <Form.Input fluid
-              onChange={this.handleChange}
-              label='Hours'
-              placeholder='Hours'
-              name='hours'
-              defaultValue={this.noNum(this.props.newtimer.get('hours'))}
-            />
-            <Form.Input fluid
-              onChange={this.handleChange}
-              label='Minutes'
-              placeholder='Minutes'
-              name='minutes'
-              defaultValue={this.noNum(this.props.newtimer.get('minutes'))}
-            />
-            <Form.Input fluid
-              onChange={this.handleChange}
-              label='Seconds'
-              placeholder='Seconds'
-              name='seconds'
-              defaultValue={this.noNum(this.props.newtimer.get('seconds'))}
-            />
+            {this.inputs()}
           </Form.Group>
         </Form>
       </div>
