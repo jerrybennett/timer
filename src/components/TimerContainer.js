@@ -6,12 +6,7 @@ import CountDown from './CountDown'
 import StartStop from './StartStop'
 import SetTime from './SetTime'
 import * as timerStates from '../timerStates'
-// import Sound from './Sound'
 import soundfile from '../assets/elephant.mp3'
-// var audio = new Audio(soundfile);
-// // audio.play();
-// let url = soundfile
-// let audio = new Audio(soundfile);
 
 class TimerContainer extends Component {
 
@@ -24,16 +19,11 @@ class TimerContainer extends Component {
     on: false
   }
 
-  // componentWillMount(){
-  //   audio.
-  // }
-
   alert = (i) => {
     let audio = new Audio(soundfile)
     if(i === timerStates.COMPLETE)
 
      return (
-       // <Sound />
        <audio ref="audio_tag" src={soundfile} autoPlay/>
            )
   }
