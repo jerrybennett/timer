@@ -37,7 +37,7 @@ class SetTime extends Component {
       return(
         time.map( i => <Form.Input key={i} fluid
           onChange={this.handleChange}
-          label={i}
+          label={i.toUpperCase()}
           placeholder={i}          name={i}
           defaultValue={this.noNum(this.props.newtimer.get('hours'))}
                        />)
